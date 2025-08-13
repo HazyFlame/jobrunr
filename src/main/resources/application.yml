@@ -1,0 +1,27 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: jobrunr-demo
+
+  datasource:
+    url: jdbc:sqlite:jobrunr.db
+    driver-class-name: org.sqlite.JDBC
+    username: ""
+    password: ""
+
+# JobRunr Configuration
+jobrunr:
+  job-scheduler:
+    enabled: true
+  background-job-server:
+    enabled: true
+    worker-count: 8
+  dashboard:
+    enabled: true
+    port: 9000
+  database:
+    type: sql
+  jobs:
+    default-number-of-retries: 3
