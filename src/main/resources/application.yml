@@ -1,9 +1,9 @@
 server:
-  port: 8080
+  port: 8082
 
 spring:
   application:
-    name: jobrunr-demo
+    name: billing
 
   datasource:
     url: jdbc:sqlite:jobrunr.db
@@ -20,7 +20,7 @@ jobrunr:
     worker-count: 8
   dashboard:
     enabled: true
-    port: 9000
+    port: 8081
   database:
     type: sql
   jobs:

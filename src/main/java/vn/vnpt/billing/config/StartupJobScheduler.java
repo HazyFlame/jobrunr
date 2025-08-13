@@ -1,6 +1,6 @@
-package com.example.jobrunr.config;
+package vn.vnpt.billing.config;
 
-import com.example.jobrunr.service.JobService;
+import vn.vnpt.billing.service.ManualJobService;
 import org.jobrunr.scheduling.JobScheduler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,7 +14,7 @@ public class StartupJobScheduler {
     private static final Logger logger = LoggerFactory.getLogger(StartupJobScheduler.class);
 
     @Bean
-    public ApplicationRunner scheduleStartupJobs(@Autowired(required = false) JobScheduler jobScheduler, JobService jobService) {
+    public ApplicationRunner scheduleStartupJobs(@Autowired(required = false) JobScheduler jobScheduler, ManualJobService jobService) {
         return args -> {
             if (jobScheduler == null) {
                 logger.error("JobScheduler bean is not available! Check your configuration.");
@@ -31,8 +31,8 @@ public class StartupJobScheduler {
                 logger.info("Startup job scheduled with ID: {}", jobId);
 
                 logger.info("Startup jobs scheduled successfully");
-                logger.info("JobRunr Dashboard available at: http://localhost:8000");
-                logger.info("API endpoints available at: http://localhost:8080/api/jobs/status");
+                logger.info("JobRunr Dashboard available at: http://localhost:8081");
+                logger.info("API endpoints available at: http://localhost:8082/api/jobs/status");
             } catch (Exception e) {
                 logger.error("Failed to schedule startup jobs", e);
             }

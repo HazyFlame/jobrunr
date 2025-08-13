@@ -1,11 +1,11 @@
-package com.example.jobrunr;
+package vn.vnpt.billing;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class JobRunrDemoApplication {
+public class BillingApplication {
     public static void main(String[] args) {
-        SpringApplication.run(JobRunrDemoApplication.class, args);
+        SpringApplication.run(BillingApplication.class, args);
     }
 }

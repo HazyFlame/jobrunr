@@ -1,4 +1,4 @@
-package com.example.jobrunr.config;
+package vn.vnpt.billing.config;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
@@ -51,8 +51,8 @@ public class JobRunrConfiguration {
     public JobRunrConfigurationResult jobRunr(StorageProvider storageProvider) {
         return JobRunr.configure()
                 .useStorageProvider(storageProvider)
-                .useBackgroundJobServer()   // bật server
-                .useDashboard(8000)         // bật dashboard
+                .useBackgroundJobServer()           // bật server
+//                .useDashboard(8081)     // bật dashboard
                 .initialize();
     }
 

@@ -1,4 +1,4 @@
-package com.example.jobrunr.service;
+package vn.vnpt.billing.service;
 
 import org.jobrunr.jobs.annotations.Job;
 import org.slf4j.Logger;
@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 
 @Service
-public class JobService {
-    private static final Logger logger = LoggerFactory.getLogger(JobService.class);
+public class ManualJobService {
+    private static final Logger logger = LoggerFactory.getLogger(ManualJobService.class);
 
     @Job(name = "Simple Background Job", retries = 2)
     public void executeSimpleJob(String message) {

@@ -1,12 +1,12 @@
-package com.example.jobrunr.controller;
+package vn.vnpt.billing.controller;
 
-import com.example.jobrunr.service.JobService;
 import org.jobrunr.jobs.JobId;
 import org.jobrunr.scheduling.JobScheduler;
 import org.jobrunr.scheduling.cron.Cron;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import vn.vnpt.billing.service.ManualJobService;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -16,17 +16,17 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/jobs")
-public class JobController {
+public class ManualJobController {
 
     @Autowired
     private JobScheduler jobScheduler;
 
     @Autowired
-    private JobService jobService;
+    private ManualJobService manualJobService;
 
     @PostMapping("/simple")
     public ResponseEntity<Map<String, Object>> scheduleSimpleJob(@RequestParam String message) {
-        var jobId = jobScheduler.enqueue(() -> jobService.executeSimpleJob(message));
+        var jobId = jobScheduler.enqueue(() -> manualJobService.executeSimpleJob(message));
 
         Map<String, Object> response = new HashMap<>();
         response.put("jobId", jobId);
@@ -42,7 +42,7 @@ public class JobController {
             @RequestParam String subject,
             @RequestParam String content) {
 
-        var jobId = jobScheduler.enqueue(() -> jobService.sendEmail(recipient, subject, content));
+        var jobId = jobScheduler.enqueue(() -> manualJobService.sendEmail(recipient, subject, content));
 
         Map<String, Object> response = new HashMap<>();
         response.put("jobId", jobId);
@@ -58,7 +58,7 @@ public class JobController {
             @RequestParam(defaultValue = "1") int processingType) {
 
         String dataId = "DATA_" + UUID.randomUUID().toString().substring(0, 8);
-        var jobId = jobScheduler.enqueue(() -> jobService.processData(dataId, processingType));
+        var jobId = jobScheduler.enqueue(() -> manualJobService.processData(dataId, processingType));
 
         Map<String, Object> response = new HashMap<>();
         response.put("jobId", jobId);
@@ -72,7 +72,7 @@ public class JobController {
 
     @PostMapping("/long-running")
     public ResponseEntity<Map<String, Object>> scheduleLongRunningJob(@RequestParam String taskName) {
-        var jobId = jobScheduler.enqueue(() -> jobService.longRunningJob(taskName));
+        var jobId = jobScheduler.enqueue(() -> manualJobService.longRunningJob(taskName));
 
         Map<String, Object> response = new HashMap<>();
         response.put("jobId", jobId);
@@ -90,7 +90,7 @@ public class JobController {
 
         var jobId = jobScheduler.schedule(
                 LocalDateTime.now().plusSeconds(delayInSeconds),
-                () -> jobService.executeSimpleJob(message + " (Delayed)")
+                () -> manualJobService.executeSimpleJob(message + " (Delayed)")
         );
 
         Map<String, Object> response = new HashMap<>();
@@ -109,7 +109,7 @@ public class JobController {
                 "recurring-simple-job",
                 Cron.every5minutes(),
                 ZoneId.systemDefault(),
-                () -> jobService.executeSimpleJob(message + " (Recurring)")
+                () -> manualJobService.executeSimpleJob(message + " (Recurring)")
         );
 
         Map<String, Object> response = new HashMap<>();
