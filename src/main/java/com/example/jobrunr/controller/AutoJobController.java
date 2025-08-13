@@ -1,4 +1,4 @@
-package vn.vnpt.billing.controller;
+package com.example.jobrunr.controller;
 
 import org.jobrunr.scheduling.JobScheduler;
 import org.jobrunr.scheduling.cron.Cron;
