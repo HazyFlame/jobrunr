@@ -1,9 +1,14 @@
 package com.example.jobrunr.config;
 
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.databind.JsonSerializer;
+import com.fasterxml.jackson.databind.SerializerProvider;
+import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import org.jobrunr.configuration.JobRunr;
 import org.jobrunr.configuration.JobRunrConfiguration.JobRunrConfigurationResult;
+import org.jobrunr.jobs.JobId;
 import org.jobrunr.scheduling.JobScheduler;
 import org.jobrunr.storage.StorageProvider;
 import org.jobrunr.storage.sql.common.SqlStorageProviderFactory;
@@ -12,6 +17,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 
 import javax.sql.DataSource;
+import java.io.IOException;
 
 @Configuration
 public class JobRunrConfiguration {
@@ -55,4 +61,17 @@ public class JobRunrConfiguration {
     public JobScheduler jobScheduler(JobRunrConfigurationResult result) {
         return result.getJobScheduler();
     }
+
+    @Bean
+    public com.fasterxml.jackson.databind.module.SimpleModule jobRunrModule() {
+        SimpleModule module = new SimpleModule();
+        module.addSerializer(JobId.class, new JsonSerializer<JobId>() {
+            @Override
+            public void serialize(JobId value, JsonGenerator gen, SerializerProvider serializers) throws IOException {
+                gen.writeString(value.toString());
+            }
+        });
+        return module;
+    }
+
 }
