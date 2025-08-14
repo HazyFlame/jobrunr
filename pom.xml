@@ -18,7 +18,7 @@
         <java.version>21</java.version>
         <spring.version>3.5.4</spring.version>
         <jobrunr.version>8.0.2</jobrunr.version>
-        <sqlite.version>3.45.1.0</sqlite.version>
+        <sqlite.version>3.50.3.0</sqlite.version>
     </properties>
 
     <dependencies>
@@ -50,21 +50,14 @@
             <systemPath>${project.basedir}/libs/FSSServerLib.jar</systemPath>
         </dependency>
         <dependency>
-            <groupId>ojdbc6-11.2.0.3</groupId>
-            <artifactId>ojdbc6-11.2.0.3</artifactId>
-            <version>1.0</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/libs/ojdbc6-11.2.0.3.jar</systemPath>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <scope>provided</scope>
+            <groupId>com.oracle.database.jdbc</groupId>
+            <artifactId>ojdbc11</artifactId>
+            <version>23.9.0.25.07</version>
         </dependency>
         <dependency>
             <groupId>commons-net</groupId>
             <artifactId>commons-net</artifactId>
-            <version>3.6</version>
+            <version>3.11.1</version>
         </dependency>
     </dependencies>
 
@@ -78,7 +71,7 @@
                     <layers>
                         <enabled>true</enabled>
                     </layers>
-                    <mainClass>vn.vnpt.billing.BillingApplication</mainClass>
+                    <mainClass>vn.vnptit.billing.BillingApplication</mainClass>
                 </configuration>
             </plugin>
         </plugins>

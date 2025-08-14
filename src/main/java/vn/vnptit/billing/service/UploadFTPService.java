@@ -1,4 +1,4 @@
-package vn.vnpt.billing.service;
+package vn.vnptit.billing.service;
 
 import com.fss.dictionary.Dictionary;
 import org.apache.commons.net.ftp.FTPClient;

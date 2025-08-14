@@ -1,4 +1,4 @@
-package vn.vnpt.billing.controller;
+package vn.vnptit.billing.controller;
 
 import org.jobrunr.scheduling.JobScheduler;
 import org.jobrunr.scheduling.cron.Cron;
@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import vn.vnpt.billing.service.ExportDataService;
-import vn.vnpt.billing.service.UploadFTPService;
+import vn.vnptit.billing.service.ExportDataService;
+import vn.vnptit.billing.service.UploadFTPService;
 
 import java.time.ZoneId;
 

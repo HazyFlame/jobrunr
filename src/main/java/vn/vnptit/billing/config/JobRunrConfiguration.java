@@ -1,4 +1,4 @@
-package vn.vnpt.billing.config;
+package vn.vnptit.billing.config;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
@@ -26,18 +26,11 @@ public class JobRunrConfiguration {
     @Primary
     public DataSource dataSource() {
         HikariConfig config = new HikariConfig();
-        config.setJdbcUrl("jdbc:sqlite:jobrunr.db");
+        config.setJdbcUrl("jdbc:sqlite:jobrunr.db?journal_mode=WAL&busy_timeout=5000");
         config.setMaximumPoolSize(10);
         config.setConnectionTimeout(30000);
         config.setIdleTimeout(600000);
         config.setMaxLifetime(1800000);
-
-        try {
-            Class.forName("org.sqlite.JDBC");
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException("SQLite JDBC driver not found", e);
-        }
-
         return new HikariDataSource(config);
     }
 

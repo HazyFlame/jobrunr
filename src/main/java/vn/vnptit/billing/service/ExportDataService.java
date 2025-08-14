@@ -1,4 +1,4 @@
-package vn.vnpt.billing.service;
+package vn.vnptit.billing.service;
 
 import com.fss.dictionary.Dictionary;
 import com.fss.sql.Database;

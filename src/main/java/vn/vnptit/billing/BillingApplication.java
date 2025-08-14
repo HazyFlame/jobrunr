@@ -1,4 +1,4 @@
-package vn.vnpt.billing;
+package vn.vnptit.billing;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

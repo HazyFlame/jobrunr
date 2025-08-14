@@ -1,4 +1,4 @@
-package vn.vnpt.billing.service;
+package vn.vnptit.billing.service;
 
 import org.jobrunr.jobs.annotations.Job;
 import org.slf4j.Logger;

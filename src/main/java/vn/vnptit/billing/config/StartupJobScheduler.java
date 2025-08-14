@@ -1,6 +1,6 @@
-package vn.vnpt.billing.config;
+package vn.vnptit.billing.config;
 
-import vn.vnpt.billing.service.ManualJobService;
+import vn.vnptit.billing.service.ManualJobService;
 import org.jobrunr.scheduling.JobScheduler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

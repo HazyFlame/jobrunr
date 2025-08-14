@@ -1,4 +1,4 @@
-package vn.vnpt.billing.controller;
+package vn.vnptit.billing.controller;
 
 import org.jobrunr.jobs.JobId;
 import org.jobrunr.scheduling.JobScheduler;
@@ -6,7 +6,7 @@ import org.jobrunr.scheduling.cron.Cron;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import vn.vnpt.billing.service.ManualJobService;
+import vn.vnptit.billing.service.ManualJobService;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
